@@ -5,7 +5,7 @@ server = http.createServer(app),
 io = require('socket.io').listen(server);
 app.get('/', (req, res) => {
 
-res.send('Chat Server is running on port 3000')
+res.send('Chat Server is running on port 443')
 });
 io.on('connection', (socket) => {
 
@@ -46,8 +46,9 @@ socket.on('messagedetection', (senderNickname,messageContent) => {
 
 
 
-server.listen(3000,()=>{
+server.listen(443,()=>{
 
-console.log('Node app is running on port 3000');
+console.log('Node app is running on port 443');
 
 });
+module.exports = app;
