@@ -1,11 +1,11 @@
 const express = require('express'),
-https = require('https'),
+http = require('http'),
 app = express(),
-server = https.createServer(app),
+server = http.createServer(app),
 io = require('socket.io').listen(server);
 app.get('/', (req, res) => {
 
-res.send('Chat Server is running on port 443')
+res.send('Chat Server is running on port 80')
 });
 io.on('connection', (socket) => {
 
@@ -46,9 +46,9 @@ socket.on('messagedetection', (senderNickname,messageContent) => {
 
 
 
-server.listen(443,()=>{
+server.listen(80,()=>{
 
-console.log('Node app is running on port 443');
+console.log('Node app is running on port 80');
 
 });
 module.exports = app;
