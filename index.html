@@ -31,7 +31,18 @@
             document.getElementById('message-container').innerHTML += '<div><b>' + 
                message.senderNickname + '</b>: ' + message.message + '</div>'
       //   }
-      })
+      });
+
+ socket.on('userjoinedthechat', function(userNickname) {
+            document.getElementById('message-container').innerHTML += '<div><b>' + 
+               userNickname + '</b>: ' + joined chat + '</div>'
+      });
+
+
+
+
+
+
    </script>
    
    
