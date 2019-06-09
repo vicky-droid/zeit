@@ -3,11 +3,17 @@ http = require('http'),
 app = express(),
 server = http.createServer(app),
 io = require('socket.io').listen(server);
-app.get('/', (req, res) => {
+// app.get('/', (req, res) => {
 
-res.send('Chat Server is running on port 80')
+// res.send('Chat Server is running on port 3000')
+// });
+
+
+app.get('/', function(req, res) {
+   res.sendfile('./index.html');
 });
-io.on('connection', (socket) => {
+
+io.on('connection', function(socket)  {
 
 console.log('user connected')
 
@@ -28,6 +34,10 @@ socket.on('messagedetection', (senderNickname,messageContent) => {
        let  message = {"message":messageContent, "senderNickname":senderNickname}
           // send the message to the client side  
        io.emit('message', message );
+      io.sockets.emit('newmsg', message);
+     //        io.emit('newmsg', message );
+
+
      
       });
       
@@ -40,15 +50,26 @@ socket.on('messagedetection', (senderNickname,messageContent) => {
 
 
 
-});
 
 
 
 
-
-server.listen(80,()=>{
-
-console.log('Node app is running on port 80');
+ 
 
 });
+
+
+
+
+
+server.listen(process.env.PORT || 3000 ,function(){
+    console.log("up and running on port "+process.env.PORT);
+});
+
+// server.listen(3000,()=>{
+
+// console.log('Node app is running on port 3000');
+
+// });
+
 module.exports = app;
