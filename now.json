@@ -1,7 +1,0 @@
-{
-    "version": 2,
-    "name": "zeit",
-    "builds": [
-        { "src": "**/*.js", "use": "@now/node" }
-    ]
-}
