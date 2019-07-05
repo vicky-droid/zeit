@@ -35,7 +35,7 @@ socket.on('messagedetection', (senderNickname,messageContent) => {
           // send the message to the client side  
        io.emit('message', message );
       io.sockets.emit('newmsg', message);
-             io.emit('newmsg', message );
+     //        io.emit('newmsg', message );
 
 
      
